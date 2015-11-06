@@ -156,6 +156,7 @@ function bi_resource_search_callback() {
 			"contactname" => get_post_meta( $postid, 'contact_name' ),
 			"campus" => get_post_meta( $postid, 'campus' ),
 			"department" => get_post_meta( $postid, 'department' ),
+			"extension" => get_post_meta( $postid, 'extension' ),
 			"phone" => get_post_meta( $postid, 'phone' ),
 			"email" => get_post_meta( $postid, 'email' ),
 			"streetaddress" => get_post_meta( $postid, 'street_address' ),
@@ -276,6 +277,7 @@ function bi_form_creation() {
 				$contactname = get_post_meta( $approval_postid, 'contact_name', true );
 				$campus = get_post_meta( $approval_postid, 'campus', true );
 				$department = get_post_meta( $approval_postid, 'department', true );
+				$extension = get_post_meta( $approval_postid, 'extension', true );
 				$phone = get_post_meta( $approval_postid, 'phone', true );
 				$email = get_post_meta( $approval_postid, 'email', true );
 				$streetaddress = get_post_meta( $approval_postid, 'street_address', true );
@@ -301,6 +303,13 @@ function bi_form_creation() {
 				<input type="radio" name="campus" value="MU S/T" />MU S/T<br />
 				<input type="radio" name="campus" value="UMKC" />UMKC<br /><br />
 			<strong>Department:</strong><br /><input type="text" name="department" style="width:400px" /><br /><br/>
+			<strong>Extension Resource?</strong><br />
+			<select id="extension" name="extension">
+				<option value="" selected>---Select---</option>		
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+			<br /><br/>			
 			<strong>Categories:</strong><br />
 				<input type="checkbox" name="category[]" value="a-h" />A/H<br />
 				<input type="checkbox" name="category[]" value="education" />Education<br />
@@ -417,6 +426,9 @@ function bi_form_creation() {
 						if (!empty($_POST['department'])) {
 							add_post_meta($newresourceid, 'department', $_POST['department']);
 						}
+						if (!empty($_POST['extension'])) {
+							add_post_meta($newresourceid, 'extension', $_POST['extension']);
+						}						
 						if (!empty($_POST['phone'])) {
 							add_post_meta($newresourceid, 'phone', $_POST['phone']);
 						}
@@ -487,6 +499,9 @@ function bi_form_creation() {
 						if (!empty($_POST['department'])) {
 							update_post_meta($update_post_id, 'department', $_POST['department']);
 						}
+						if (!empty($_POST['extension'])) {
+							update_post_meta($update_post_id, 'extension', $_POST['extension']);
+						}						
 						if (!empty($_POST['phone'])) {
 							update_post_meta($update_post_id, 'phone', $_POST['phone']);
 						}
@@ -673,6 +688,7 @@ function bi_resource_edit_callback() {
 		"contactname" => get_post_meta( $postid, 'contact_name' ),
 		"campus" => get_post_meta( $postid, 'campus' ),
 		"department" => get_post_meta( $postid, 'department' ),
+		"extension" => get_post_meta( $postid, 'extension' ),
 		"phone" => get_post_meta( $postid, 'phone' ),
 		"email" => get_post_meta( $postid, 'email' ),
 		"streetaddress" => get_post_meta( $postid, 'street_address' ),
@@ -710,6 +726,7 @@ function bi_resource_approve_callback() {
 		"contactname" => get_post_meta( $post_id, 'contact_name' ),
 		"campus" => get_post_meta( $post_id, 'campus' ),
 		"department" => get_post_meta( $post_id, 'department' ),
+		"extension" => get_post_meta( $post_id, 'extension' ),
 		"phone" => get_post_meta( $post_id, 'phone' ),
 		"email" => get_post_meta( $post_id, 'email' ),
 		"streetaddress" => get_post_meta( $post_id, 'street_address' ),
@@ -774,6 +791,7 @@ function bi_resource_disapprove_callback() {
 		"contactname" => get_post_meta( $post_id, 'contact_name' ),
 		"campus" => get_post_meta( $post_id, 'campus' ),
 		"department" => get_post_meta( $post_id, 'department' ),
+		"extension" => get_post_meta( $post_id, 'extension' ),
 		"phone" => get_post_meta( $post_id, 'phone' ),
 		"email" => get_post_meta( $post_id, 'email' ),
 		"streetaddress" => get_post_meta( $post_id, 'street_address' ),
